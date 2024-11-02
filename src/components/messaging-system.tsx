@@ -136,14 +136,14 @@ export default function MessagingSystem() {
                         <p className="text-xs text-gray-500">Online</p>
                       </div>
                     </div>
-                    <div className="flex space-x-2">
-                      <Button variant="ghost" size="icon">
+                    <div className="flex space-x-2" >
+                      <Button variant="ghost" className="h-4 w-4">
                         <Phone className="h-4 w-4" />
                       </Button>
-                      <Button variant="ghost" size="icon">
+                      <Button variant="ghost"className="h-4 w-4" >
                         <Video className="h-4 w-4" />
                       </Button>
-                      <Button variant="ghost" size="icon">
+                      <Button variant="ghost" className="h-4 w-4">
                         <MoreVertical className="h-4 w-4" />
                       </Button>
                     </div>

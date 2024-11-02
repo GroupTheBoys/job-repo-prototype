@@ -161,7 +161,7 @@ export default function ResumeBuilder() {
                                 onChange={(e) => handleSectionChange(section.id, e.target.value)}
                                 className="font-semibold text-lg"
                               />
-                              <Button variant="ghost" size="icon" onClick={() => handleDeleteSection(section.id)}>
+                              <Button variant="ghost" className="h-4 w-4" onClick={() => handleDeleteSection(section.id)}>
                                 <Trash2 className="h-4 w-4" />
                               </Button>
                             </div>
@@ -169,7 +169,7 @@ export default function ResumeBuilder() {
                           <CardContent>
                             <Textarea
                               value={section.content}
-                              onChange={(e) => handleSectionChange(section.id, e.target.content)}
+                              onChange={(e) => handleSectionChange(section.id, e.target.value)}
                               rows={6}
                             />
                           </CardContent>
@@ -197,7 +197,7 @@ export default function ResumeBuilder() {
                             onChange={(e) => handleSkillChange(index, 'level', parseInt(e.target.value))}
                             className="w-20"
                           />
-                          <Button variant="ghost" size="icon" onClick={() => handleDeleteSkill(index)}>
+                          <Button variant="ghost" className="h-4 w-4" onClick={() => handleDeleteSkill(index)}>
                             <Trash2 className="h-4 w-4" />
                           </Button>
                         </div>

@@ -63,7 +63,7 @@ export default function InterviewScheduler() {
   ])
 
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date())
-  const [newInterview, setNewInterview] = useState<Partial<Interview>>({
+  const [newInterview, setNewInterview] = useState<Partial<Omit<Interview, 'id' | 'candidateAvatar'>>>({
     date: new Date(),
     type: 'video'
   })
@@ -73,19 +73,39 @@ export default function InterviewScheduler() {
     setNewInterview(prev => ({ ...prev, date }))
   }
 
-  const handleNewInterviewChange = (key: keyof Interview, value: string) => {
-    setNewInterview(prev => ({ ...prev, [key]: value }))
-  }
+const handleNewInterviewChange = (
+  key: keyof Omit<Interview, 'id' | 'candidateAvatar'>,
+  value: string
+) => {
+  setNewInterview(prev => ({
+    ...prev,
+    [key]: value
+  }))
+}
 
-  const handleAddInterview = () => {
-    if (newInterview.candidateName && newInterview.position && newInterview.date && newInterview.time) {
-      setInterviews(prev => [...prev, { id: Date.now(), ...newInterview as Interview }])
-      setNewInterview({
-        date: new Date(),
-        type: 'video'
-      })
+const handleAddInterview = () => {
+  if (newInterview.candidateName && newInterview.position && newInterview.date && newInterview.time) {
+    const interview: Interview = {
+      id: Date.now(),
+      candidateAvatar: "/placeholder.svg?height=40&width=40",
+      candidateName: newInterview.candidateName,
+      position: newInterview.position,
+      date: new Date(newInterview.date),
+      time: newInterview.time,
+      duration: newInterview.duration || "1 hour",
+      type: newInterview.type || 'video',
+      location: newInterview.location || '',
     }
+
+    setInterviews(prev => [...prev, interview])
+
+    // Reset form
+    setNewInterview({
+      date: new Date(),
+      type: 'video'
+    })
   }
+}
 
   const handleDeleteInterview = (id: number) => {
     setInterviews(prev => prev.filter(interview => interview.id !== id))
@@ -124,7 +144,11 @@ export default function InterviewScheduler() {
                                 <p className="text-sm text-gray-500">{interview.position}</p>
                               </div>
                             </div>
-                            <Button variant="ghost" size="icon" onClick={() => handleDeleteInterview(interview.id)}>
+                            <Button 
+                              variant="ghost" 
+                              className="h-8 w-8"
+                              onClick={() => handleDeleteInterview(interview.id)}
+                            >
                               <X className="h-4 w-4" />
                             </Button>
                           </div>

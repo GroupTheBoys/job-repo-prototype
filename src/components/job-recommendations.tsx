@@ -33,9 +33,9 @@ export default function JobRecommendations() {
     "React", "JavaScript", "TypeScript", "Node.js", "GraphQL"
   ])
 
-  const handleFilterChange = (key, value) => {
-    setFilters(prev => ({ ...prev, [key]: value }))
-  }
+  const handleFilterChange = (key: string, value: any) => {
+  setFilters(prev => ({ ...prev, [key]: value }))
+}
 
   const filteredJobs = jobs.filter(job => {
     return (
