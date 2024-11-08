@@ -10,7 +10,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Briefcase, MapPin, GraduationCap, Award, Github, Linkedin, Mail, Phone, Calendar } from 'lucide-react'
 
 export default function CandidateProfile() {
-  const [candidate, setCandidate] = useState({
+  const [candidate] = useState({
     name: "Alice Johnson",
     title: "Senior Frontend Developer",
     location: "San Francisco, CA",
