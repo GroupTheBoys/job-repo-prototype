@@ -23,7 +23,7 @@ type Candidate = {
 }
 
 export default function CandidateComparisonTool() {
-  const [candidates, setCandidates] = useState<Candidate[]>([
+  const [candidates] = useState<Candidate[]>([
     {
       id: 1,
       name: "Alice Johnson",
