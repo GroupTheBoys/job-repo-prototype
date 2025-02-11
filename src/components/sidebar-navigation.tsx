@@ -145,6 +145,7 @@ export default function SidebarNav() {
 export function MobileSidebar() {
   const pathname = usePathname()
   
+  
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -152,6 +153,7 @@ export function MobileSidebar() {
           <Menu className="h-6 w-6" />
         </Button>
       </SheetTrigger>
+      {/* @ts-ignore*/}
       <SheetContent side={'left' as 'left' | 'right' | 'top' | 'bottom'} className="p-0">
         <ScrollArea className="h-full">
           <div className="space-y-4 py-4">
